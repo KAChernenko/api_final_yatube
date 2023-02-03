@@ -68,9 +68,6 @@ class FollowSerializer(serializers.ModelSerializer):
             )
         ]
 
-    def get_queryset(self):
-        return self.request.user.follower
-
     def validate(self, value):
         if self.context['request'].user == value['following']:
             raise serializers.ValidationError(
